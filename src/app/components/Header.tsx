@@ -1,50 +1,72 @@
 import { Crown } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-amber-500/10"
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        scrolled
+          ? 'header-solid'
+          : 'bg-transparent backdrop-blur-none'
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-3 group">
           <div className="relative">
-            <Crown className="w-8 h-8 text-amber-400" strokeWidth={1.5} />
-            <div className="absolute inset-0 blur-xl bg-amber-400/30 -z-10" />
+            <Crown
+              className="w-6 h-6 text-[#D4AF37] transition-all duration-500 group-hover:rotate-12 group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]"
+              strokeWidth={1.5}
+            />
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-white tracking-tight">
-              Elite Store
-            </h1>
-            <p className="text-xs text-amber-400/70 tracking-widest uppercase">
-              Custom Platform
-            </p>
-          </div>
-        </div>
-        
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#diferenciais" className="text-sm text-slate-300 hover:text-amber-400 transition-colors">
-            Diferenciais
-          </a>
-          <a href="#tecnologia" className="text-sm text-slate-300 hover:text-amber-400 transition-colors">
-            Tecnologia
-          </a>
-          <a href="#comparacao" className="text-sm text-slate-300 hover:text-amber-400 transition-colors">
-            Comparação
-          </a>
+          <span className="text-sm font-light tracking-[0.3em] uppercase text-white">
+            Elite Store
+          </span>
+        </a>
+
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-10">
+          {['Diferenciais', 'Tecnologia', 'Planos', 'Resultados'].map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="relative text-[13px] tracking-[0.15em] uppercase text-white/40 hover:text-[#D4AF37] transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-[#D4AF37] after:transition-all after:duration-300 hover:after:w-full"
+            >
+              {item}
+            </a>
+          ))}
         </nav>
 
+        {/* CTA */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 rounded-lg font-semibold text-sm hover:from-amber-500 hover:to-amber-600 transition-all shadow-lg shadow-amber-500/25"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="px-6 py-2.5 text-[12px] tracking-[0.2em] uppercase font-medium text-[#D4AF37] border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-black transition-all duration-500 backdrop-blur-sm"
         >
           Contato
         </motion.button>
       </div>
+
+      {/* Gold line at bottom */}
+      <div
+        className={`h-px transition-opacity duration-700 bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent ${
+          scrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
     </motion.header>
   );
 }

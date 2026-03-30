@@ -1,151 +1,205 @@
-import { Check, X } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Check, X, ArrowRight, Crown } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 
-const features = [
+const plans = [
   {
-    category: 'Controle e Propriedade',
-    items: [
-      { feature: 'Código-fonte próprio', common: false, custom: true },
-      { feature: 'Banco de dados dedicado', common: false, custom: true },
-      { feature: 'Liberdade total de customização', common: false, custom: true },
-      { feature: 'Sem taxas mensais recorrentes', common: false, custom: true },
+    name: 'Plataforma Comum',
+    subtitle: 'SaaS Generico',
+    price: 'R$ 299',
+    period: '/mes + taxas',
+    recommended: false,
+    features: [
+      { text: 'Templates padronizados', included: true },
+      { text: 'Hospedagem compartilhada', included: true },
+      { text: 'Suporte basico', included: true },
+      { text: 'Codigo-fonte proprio', included: false },
+      { text: 'Banco de dados dedicado', included: false },
+      { text: 'Customizacao total', included: false },
+      { text: 'Integracoes sob demanda', included: false },
+      { text: 'API propria', included: false },
+      { text: 'Escalabilidade ilimitada', included: false },
     ],
   },
   {
-    category: 'Performance e Escalabilidade',
-    items: [
-      { feature: 'Infraestrutura escalável', common: false, custom: true },
-      { feature: 'Otimização dedicada', common: false, custom: true },
-      { feature: 'Sem limitações de recursos', common: false, custom: true },
-      { feature: 'Velocidade otimizada', common: true, custom: true },
-    ],
-  },
-  {
-    category: 'Recursos e Integrações',
-    items: [
-      { feature: 'Integrações sob demanda', common: false, custom: true },
-      { feature: 'API própria customizada', common: false, custom: true },
-      { feature: 'Módulos exclusivos', common: false, custom: true },
-      { feature: 'Suporte prioritário', common: false, custom: true },
+    name: 'Sistema Proprio',
+    subtitle: 'Sob Medida',
+    price: 'Sob Consulta',
+    period: 'investimento unico',
+    recommended: true,
+    features: [
+      { text: 'Templates padronizados', included: true },
+      { text: 'Hospedagem compartilhada', included: true },
+      { text: 'Suporte basico', included: true },
+      { text: 'Codigo-fonte proprio', included: true },
+      { text: 'Banco de dados dedicado', included: true },
+      { text: 'Customizacao total', included: true },
+      { text: 'Integracoes sob demanda', included: true },
+      { text: 'API propria', included: true },
+      { text: 'Escalabilidade ilimitada', included: true },
     ],
   },
 ];
 
 export function Comparison() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const headerY = useTransform(scrollYProgress, [0, 1], [60, -30]);
+
   return (
-    <section id="comparacao" className="py-24 px-6 relative">
-      <div className="max-w-6xl mx-auto">
+    <section id="planos" className="py-32 md:py-44 px-6 bg-[#000000] relative" ref={sectionRef}>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/10 to-transparent" />
+
+      <div className="max-w-5xl mx-auto relative z-10">
+        {/* Section header with parallax */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          style={{ y: headerY }}
+          className="text-center mb-20"
         >
-          <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-4 block">
-            Comparação Técnica
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Plataforma Comum vs
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-[11px] tracking-[0.5em] uppercase text-[#D4AF37]/60 mb-6"
+          >
+            Comparacao
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white tracking-tight"
+          >
+            Escolha o caminho
             <br />
-            <span className="bg-gradient-to-r from-amber-400 to-amber-300 bg-clip-text text-transparent">
-              Sistema Sob Medida
+            <span className="bg-gradient-to-r from-[#C9A55C] via-[#F5E6A3] to-[#D4AF37] bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%]">
+              para o seu sucesso
             </span>
-          </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Entenda as vantagens competitivas de ter uma solução desenvolvida exclusivamente para você.
-          </p>
+          </motion.h2>
         </motion.div>
 
-        {/* Comparison Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-slate-900/80 to-slate-800/50 rounded-3xl border border-slate-700/50 overflow-hidden"
-        >
-          {/* Table Header */}
-          <div className="grid grid-cols-3 gap-4 p-6 border-b border-slate-700/50 bg-slate-950/50">
-            <div className="text-slate-400 font-semibold text-sm">Característica</div>
-            <div className="text-center">
-              <div className="text-slate-300 font-semibold mb-1">Plataforma Comum</div>
-              <div className="text-xs text-slate-500">SaaS Genérico</div>
-            </div>
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-amber-400 to-amber-300 bg-clip-text text-transparent font-bold mb-1">
-                Sistema Próprio
-              </div>
-              <div className="text-xs text-amber-400/70">Sob Medida</div>
-            </div>
-          </div>
-
-          {/* Table Body */}
-          <div className="divide-y divide-slate-700/30">
-            {features.map((category, categoryIndex) => (
-              <div key={category.category}>
-                <div className="px-6 py-3 bg-slate-950/30">
-                  <h3 className="text-white font-semibold text-sm">{category.category}</h3>
+        {/* Pricing cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {plans.map((plan, planIndex) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: planIndex * 0.15 }}
+              viewport={{ once: true }}
+              className="relative group"
+            >
+              {/* Recommended badge */}
+              {plan.recommended && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+                  <span className="flex items-center gap-1.5 px-4 py-1 text-[10px] tracking-[0.3em] uppercase font-medium bg-[#D4AF37] text-black">
+                    <Crown className="w-3 h-3" strokeWidth={2} />
+                    Recomendado
+                  </span>
                 </div>
-                {category.items.map((item, itemIndex) => (
-                  <motion.div
-                    key={item.feature}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: (categoryIndex * 0.1) + (itemIndex * 0.05) }}
-                    viewport={{ once: true }}
-                    className="grid grid-cols-3 gap-4 px-6 py-4 hover:bg-slate-800/30 transition-colors"
-                  >
-                    <div className="text-slate-300 text-sm">{item.feature}</div>
-                    <div className="flex justify-center">
-                      {item.common ? (
-                        <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                          <Check className="w-4 h-4 text-green-400" strokeWidth={2.5} />
-                        </div>
-                      ) : (
-                        <div className="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center">
-                          <X className="w-4 h-4 text-red-400" strokeWidth={2.5} />
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex justify-center">
-                      {item.custom ? (
-                        <div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center">
-                          <Check className="w-4 h-4 text-amber-400" strokeWidth={2.5} />
-                        </div>
-                      ) : (
-                        <div className="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center">
-                          <X className="w-4 h-4 text-red-400" strokeWidth={2.5} />
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            ))}
-          </div>
+              )}
 
-          {/* Footer CTA */}
-          <div className="p-6 bg-gradient-to-r from-amber-500/10 to-transparent border-t border-amber-500/20">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div>
-                <p className="text-white font-semibold mb-1">
-                  Invista em uma solução que cresce com você
-                </p>
-                <p className="text-slate-400 text-sm">
-                  Liberdade, controle e retorno a longo prazo
-                </p>
-              </div>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 rounded-xl font-bold hover:from-amber-500 hover:to-amber-600 transition-all shadow-lg shadow-amber-500/25 whitespace-nowrap"
+              <div
+                className={`relative h-full rounded-2xl overflow-hidden transition-all duration-700 ${
+                  plan.recommended
+                    ? 'bg-white/[0.04] backdrop-blur-xl border-2 border-[#D4AF37]/40 shadow-[0_0_80px_rgba(212,175,55,0.1)]'
+                    : 'bg-white/[0.02] backdrop-blur-xl border border-white/[0.06] hover:border-white/[0.1]'
+                }`}
               >
-                Solicitar Consultoria
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
+                {/* Gold shimmer glow for premium card */}
+                {plan.recommended && (
+                  <>
+                    <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#D4AF37]/[0.06] rounded-full blur-3xl animate-breathe-glow" />
+                    <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#D4AF37]/[0.04] rounded-full blur-3xl animate-breathe-glow" style={{ animationDelay: '2s' }} />
+                  </>
+                )}
+
+                {/* Card header */}
+                <div className="relative z-10 p-8 md:p-10 pb-0">
+                  <p className="text-[11px] tracking-[0.3em] uppercase text-white/30 mb-2">
+                    {plan.subtitle}
+                  </p>
+                  <h3
+                    className={`text-2xl font-light mb-4 ${
+                      plan.recommended ? 'text-[#D4AF37]' : 'text-white'
+                    }`}
+                  >
+                    {plan.name}
+                  </h3>
+                  <div className="flex items-baseline gap-1 mb-8">
+                    <span className="text-3xl md:text-4xl font-extralight text-white">
+                      {plan.price}
+                    </span>
+                    <span className="text-xs text-white/20 ml-1">{plan.period}</span>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="relative z-10 mx-8 md:mx-10 h-px bg-white/[0.04]" />
+
+                {/* Features */}
+                <div className="relative z-10 p-8 md:p-10 space-y-4">
+                  {plan.features.map((feature) => (
+                    <div key={feature.text} className="flex items-center gap-3">
+                      {feature.included ? (
+                        <div
+                          className={`w-5 h-5 rounded-full flex items-center justify-center ${
+                            plan.recommended
+                              ? 'bg-[#D4AF37]/15'
+                              : 'bg-white/[0.06]'
+                          }`}
+                        >
+                          <Check
+                            className={`w-3 h-3 ${
+                              plan.recommended ? 'text-[#D4AF37]' : 'text-white/40'
+                            }`}
+                            strokeWidth={2.5}
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-5 h-5 rounded-full bg-white/[0.02] flex items-center justify-center">
+                          <X className="w-3 h-3 text-white/10" strokeWidth={2} />
+                        </div>
+                      )}
+                      <span
+                        className={`text-sm font-light ${
+                          feature.included ? 'text-white/60' : 'text-white/15'
+                        }`}
+                      >
+                        {feature.text}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <div className="relative z-10 p-8 md:p-10 pt-2">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`group/btn w-full py-4 text-sm tracking-[0.15em] uppercase font-medium flex items-center justify-center gap-2 transition-all duration-500 overflow-hidden relative ${
+                      plan.recommended
+                        ? 'bg-[#D4AF37] text-black hover:bg-[#E5C349]'
+                        : 'border border-white/[0.06] text-white/30 hover:text-white hover:border-[#D4AF37]/30'
+                    }`}
+                  >
+                    {plan.recommended && (
+                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+                    )}
+                    <span className="relative">{plan.recommended ? 'Solicitar Consultoria' : 'Saiba Mais'}</span>
+                    <ArrowRight className="relative w-4 h-4" />
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
