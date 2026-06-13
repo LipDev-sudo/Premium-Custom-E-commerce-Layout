@@ -1,11 +1,12 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "premium-custom-ecommerce-layout",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "dev": "vite",
     "build": "vite build",
-    "dev": "vite"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
@@ -85,5 +86,24 @@
     "overrides": {
       "vite": "6.3.5"
     }
-  }
+  },
+  "description": "Layout premium de e-commerce com glassmorphism, animacoes, composicao visual refinada e foco em produtos de alto valor.",
+  "author": "Hamilton Felipe Soares da Silva",
+  "license": "MIT",
+  "homepage": "https://premium-custom-e-commerce-layout.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LipDev-sudo/Premium-Custom-E-commerce-Layout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LipDev-sudo/Premium-Custom-E-commerce-Layout/issues"
+  },
+  "keywords": [
+    "premium",
+    "ecommerce",
+    "glassmorphism",
+    "react",
+    "vite",
+    "typescript"
+  ]
 }
