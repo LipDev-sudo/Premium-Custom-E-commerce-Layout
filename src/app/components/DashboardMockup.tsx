@@ -52,7 +52,7 @@ export function DashboardMockup() {
             viewport={{ once: true }}
             className="text-white/30 text-lg font-light max-w-xl mx-auto mt-6"
           >
-            Gerencie toda sua operacao com analytics em tempo real e controle total.
+            Mockup conceitual com dados fictícios, incluído apenas para demonstrar hierarquia e leitura operacional.
           </motion.p>
         </motion.div>
 
@@ -80,7 +80,7 @@ export function DashboardMockup() {
                 </div>
                 <div className="flex-1 ml-4">
                   <div className="px-4 py-1 bg-white/[0.03] backdrop-blur-sm rounded text-[11px] text-white/20 max-w-sm font-mono border border-white/[0.04]">
-                    suaplataforma.com.br/admin
+                    painel administrativo · dados fictícios
                   </div>
                 </div>
               </div>
@@ -89,10 +89,10 @@ export function DashboardMockup() {
               <div className="p-6 md:p-8 bg-[#0A0A0A]/60">
                 {/* Stat cards row - glass panels */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                  <DashStatCard icon={DollarSign} label="Faturamento" value="R$ 47.259" trend="+23%" />
-                  <DashStatCard icon={ShoppingCart} label="Pedidos" value="142" trend="+12%" />
-                  <DashStatCard icon={Users} label="Clientes" value="89" trend="+8%" />
-                  <DashStatCard icon={Package} label="Vendidos" value="1.247" trend="+18%" />
+                  <DashStatCard icon={DollarSign} label="Faturamento" value="R$ —" trend="demo" />
+                  <DashStatCard icon={ShoppingCart} label="Pedidos" value="—" trend="demo" />
+                  <DashStatCard icon={Users} label="Clientes" value="—" trend="demo" />
+                  <DashStatCard icon={Package} label="Vendidos" value="—" trend="demo" />
                 </div>
 
                 {/* Charts area - glass panels */}
@@ -101,8 +101,8 @@ export function DashboardMockup() {
                   <div className="lg:col-span-2 bg-white/[0.02] backdrop-blur-sm rounded-xl p-5 border border-white/[0.04]">
                     <div className="flex items-center justify-between mb-5">
                       <div>
-                        <p className="text-white text-sm font-light">Vendas por Periodo</p>
-                        <p className="text-white/20 text-xs mt-0.5">Ultimos 7 dias</p>
+                        <p className="text-white text-sm font-light">Visualização ilustrativa</p>
+                        <p className="text-white/20 text-xs mt-0.5">Sem dados reais</p>
                       </div>
                       <BarChart3 className="w-4 h-4 text-[#D4AF37]/40" />
                     </div>

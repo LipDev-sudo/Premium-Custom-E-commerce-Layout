@@ -1,6 +1,6 @@
-# Premium Custom E-commerce Layout
+# Premium Custom E-commerce — Jornada de compra
 
-Layout premium de e-commerce com glassmorphism, animacoes, composicao visual refinada e foco em produtos de alto valor.
+Experiência de checkout assistido e acompanhamento pós-compra para marcas com produtos de alto valor.
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-00D4FF?style=for-the-badge)](https://premium-custom-e-commerce-layout.vercel.app/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-LipDev.BR-BEF264?style=for-the-badge)](https://lipdev.vercel.app/)
@@ -8,7 +8,7 @@ Layout premium de e-commerce com glassmorphism, animacoes, composicao visual ref
 
 ## Visao do projeto
 
-Projeto de vitrine premium para marcas que precisam parecer mais sofisticadas do que um template comum.
+O projeto preserva sua direção visual em preto e dourado e demonstra uma competência específica: conduzir uma decisão de alto valor com clareza, escolha de entrega, pagamento simulado, confirmação e evolução do acompanhamento.
 
 ## Demo
 
@@ -17,11 +17,11 @@ Projeto de vitrine premium para marcas que precisam parecer mais sofisticadas do
 
 ## Destaques
 
-- Hero premium com apelo visual forte
-- Cards com glassmorphism e detalhes modernos
-- Animacoes suaves para reforcar percepcao de valor
-- Estrutura responsiva para apresentacao comercial
-- Boa base para landing pages de produtos, lojas boutique e lancamentos
+- Checkout interativo com escolha de entrega e pagamento demonstrativo
+- Confirmação explícita de pedido simulado
+- Linha do tempo de acompanhamento com evolução de status
+- Avisos claros de que nenhum pagamento real é processado
+- Identidade premium responsiva preservada
 
 ## Stack
 
@@ -33,7 +33,9 @@ Projeto de vitrine premium para marcas que precisam parecer mais sofisticadas do
 ## Como rodar localmente
 
 ```bash
-npm install
+npm ci
+npm run typecheck
+npm run lint
 npm run dev
 ```
 
@@ -42,17 +44,15 @@ Para gerar uma build de producao:
 ```bash
 npm run build
 npm run preview
+npm audit
 ```
 
-## Estrutura de evolucao
+## Limites da demonstração
 
-Este projeto pode evoluir com:
-
-- Integracao com API real
-- Painel administrativo
-- Autenticacao de usuarios
-- Checkout ou integracao com WhatsApp
-- Banco de dados para produtos, pedidos e clientes
+- não solicita nem armazena dados pessoais ou financeiros;
+- pedido, desconto, entrega e acompanhamento são simulados localmente;
+- não há autenticação, API, estoque ou integração logística;
+- os demais indicadores visuais da página são demonstrativos.
 
 ## Autor
 

@@ -3,10 +3,10 @@ import { motion, useInView, useScroll, useTransform } from 'motion/react';
 import { Sparkles, TrendingUp, Shield, Zap } from 'lucide-react';
 
 const stats = [
-  { value: 10000, suffix: '+', label: 'Clientes Ativos', prefix: '', icon: Sparkles },
-  { value: 99, suffix: '%', label: 'Satisfacao', prefix: '', icon: TrendingUp },
-  { value: 50, suffix: 'M+', label: 'Transacoes Processadas', prefix: 'R$ ', icon: Shield },
-  { value: 99.9, suffix: '%', label: 'Uptime Garantido', prefix: '', icon: Zap },
+  { value: 2, suffix: '', label: 'Formas de entrega', prefix: '', icon: Sparkles },
+  { value: 2, suffix: '', label: 'Opcoes de pagamento', prefix: '', icon: TrendingUp },
+  { value: 3, suffix: '', label: 'Etapas acompanhadas', prefix: '', icon: Shield },
+  { value: 0, suffix: '', label: 'Dados reais processados', prefix: '', icon: Zap },
 ];
 
 function AnimatedCounter({
@@ -86,7 +86,7 @@ export function Highlights() {
             viewport={{ once: true }}
             className="text-[11px] tracking-[0.5em] uppercase text-[#D4AF37]/60 mb-6"
           >
-            Resultados
+            Escopo demonstrado
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -95,10 +95,10 @@ export function Highlights() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-6xl font-extralight text-white tracking-tight"
           >
-            Numeros que
+            Uma jornada que
             <br />
             <span className="bg-gradient-to-r from-[#C9A55C] via-[#F5E6A3] to-[#D4AF37] bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%]">
-              falam por si
+              pode ser verificada
             </span>
           </motion.h2>
         </motion.div>
@@ -152,24 +152,26 @@ export function Highlights() {
           className="mt-24 text-center"
         >
           <p className="text-white/30 text-lg font-light mb-8">
-            Pronto para ter uma plataforma verdadeiramente sua?
+            Explore novamente os estados da demonstração.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <motion.button
+            <motion.a
+              href="#jornada"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="group relative px-10 py-4 bg-[#D4AF37] text-black text-sm tracking-[0.15em] uppercase font-medium hover:bg-[#E5C349] transition-colors duration-300 overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative">Iniciar Meu Projeto</span>
-            </motion.button>
-            <motion.button
+              <span className="relative">Rever Jornada</span>
+            </motion.a>
+            <motion.a
+              href="#tecnologia"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="px-10 py-4 text-sm tracking-[0.15em] uppercase text-white/30 hover:text-white border border-white/[0.06] hover:border-[#D4AF37]/30 backdrop-blur-sm transition-all duration-500"
             >
-              Agendar Demo
-            </motion.button>
+              Ver Mockup
+            </motion.a>
           </div>
         </motion.div>
       </div>
