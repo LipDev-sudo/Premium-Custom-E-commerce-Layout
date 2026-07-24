@@ -88,8 +88,8 @@ export function Hero() {
           style={{ y: subtitleY }}
           className="text-lg md:text-xl text-white/40 font-light max-w-2xl mx-auto leading-relaxed mb-16"
         >
-          Sistema exclusivo desenvolvido sob medida. Banco de dados proprio,
-          escalabilidade ilimitada e controle absoluto sobre cada detalhe.
+          Demonstração de uma experiência sob medida para compras de alto valor,
+          do checkout assistido ao acompanhamento pós-compra.
         </motion.p>
 
         {/* CTA */}
@@ -99,24 +99,26 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <motion.button
+          <motion.a
+            href="#jornada"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="group relative flex items-center gap-3 px-10 py-4 text-sm tracking-[0.15em] uppercase font-medium border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-500 overflow-hidden"
           >
             {/* Shimmer sweep on hover */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            <span className="relative">Descubra o Premium</span>
+            <span className="relative">Explorar Jornada</span>
             <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </motion.button>
+          </motion.a>
 
-          <motion.button
+          <motion.a
+            href="#tecnologia"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="px-10 py-4 text-sm tracking-[0.15em] uppercase text-white/30 hover:text-white border border-white/[0.06] hover:border-[#D4AF37]/30 backdrop-blur-sm transition-all duration-500"
           >
-            Ver Demo
-          </motion.button>
+            Ver Mockup
+          </motion.a>
         </motion.div>
 
         {/* Floating product mockup visual with parallax */}
